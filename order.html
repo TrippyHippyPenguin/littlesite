@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tell TWM Tech about your website project." />
+    <title>Start your project — TWM Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="order.css" />
+    <script src="order.js" defer></script>
+  </head>
+  <body class="order-page">
+    <a class="skip-link" href="#order-form">Skip to form</a>
+
+    <header class="order-header">
+      <div class="shell order-nav">
+        <a class="brand" href="index.html" aria-label="TWM Tech home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M7 8h18M10 8v16M22 8v16M16 13v11" />
+            </svg>
+          </span>
+          <span>TWM<span>TECH</span></span>
+        </a>
+        <a class="back-link" href="index.html#services"><span>←</span> Back to packages</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="order-hero">
+        <div class="shell order-hero-inner">
+          <div class="eyebrow"><span></span> Project request</div>
+          <h1>Tell us what you’re<br />ready to <em>build.</em></h1>
+          <p>
+            Share the basics below. This gives us a clear picture of your business, your website,
+            and the best way to plan your project.
+          </p>
+          <div class="order-progress" aria-label="Order progress">
+            <div class="active"><i>1</i><span>Project details</span></div>
+            <b></b>
+            <div><i>2</i><span>Review & quote</span></div>
+            <b></b>
+            <div><i>3</i><span>Build</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="order-content">
+        <div class="shell order-layout">
+          <form class="project-form" id="order-form" novalidate>
+            <input class="form-trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form-section">
+              <div class="form-section-heading">
+                <span>01</span>
+                <div>
+                  <h2>Choose your website</h2>
+                  <p>You can change the package that brought you here.</p>
+                </div>
+              </div>
+
+              <fieldset class="package-options">
+                <legend class="sr-only">Website package</legend>
+                <label class="select-card">
+                  <input type="radio" name="website_package" value="Simple Website" data-package="simple" required />
+                  <span class="radio-mark"></span>
+                  <span class="option-copy">
+                    <strong>Simple Website</strong>
+                    <small>Information, services, pricing, and contact details. Fixed at $50.</small>
+                  </span>
+                  <span class="option-tag">$50</span>
+                </label>
+                <label class="select-card advanced-select">
+                  <input type="radio" name="website_package" value="Advanced Website" data-package="advanced" required />
+                  <span class="radio-mark"></span>
+                  <span class="option-copy">
+                    <strong>Advanced Website</strong>
+                    <small>Data, workflows, applications, bookings, and admin tools. Final quote required.</small>
+                  </span>
+                  <span class="option-tag">$150–$250</span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-heading">
+                <span>02</span>
+                <div>
+                  <h2>About your business</h2>
+                  <p>Tell us who we’re building for and how to reach you.</p>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <label class="field">
+                  <span>Business name <b>*</b></span>
+                  <input type="text" name="business_name" placeholder="Your business name" autocomplete="organization" required />
+                </label>
+                <label class="field">
+                  <span>Your name <b>*</b></span>
+                  <input type="text" name="contact_name" placeholder="First and last name" autocomplete="name" required />
+                </label>
+                <label class="field">
+                  <span>Email address <b>*</b></span>
+                  <input type="email" name="email" placeholder="you@business.com" autocomplete="email" required />
+                </label>
+                <label class="field">
+                  <span>Phone number <small>Optional</small></span>
+                  <input type="tel" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+                </label>
+                <label class="field full-field">
+                  <span>What does your business do? <b>*</b></span>
+                  <textarea name="business_description" rows="4" placeholder="Briefly describe your services, customers, and what makes your business different." required></textarea>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-heading">
+                <span>03</span>
+                <div>
+                  <h2>What should your website do?</h2>
+                  <p>Choose anything that applies, then describe the result you want.</p>
+                </div>
+              </div>
+
+              <fieldset class="needs-grid">
+                <legend class="needs-legend">Every website can include</legend>
+                <label><input type="checkbox" name="website_needs" value="Show services and pricing" /><i>✓</i><span>Show services & pricing</span></label>
+                <label><input type="checkbox" name="website_needs" value="Display contact information" /><i>✓</i><span>Display contact information</span></label>
+              </fieldset>
+
+              <div class="capability-guidance" id="capability-guidance" aria-live="polite">
+                <i>⌁</i>
+                <p><strong>Simple websites display information only.</strong>Choose Advanced Website if the site needs to perform workloads, save data, or provide management tools.</p>
+              </div>
+
+              <div class="advanced-needs" id="advanced-needs" hidden>
+                <div class="advanced-needs-title">
+                  <span>ADVANCED ONLY</span>
+                  <p>Workloads, stored data, and administrative features</p>
+                </div>
+                <fieldset class="needs-grid">
+                  <legend class="sr-only">Advanced website capabilities</legend>
+                  <label><input type="checkbox" name="website_needs" value="Accept job applications" data-advanced-need disabled /><i>✓</i><span>Accept job applications</span></label>
+                  <label><input type="checkbox" name="website_needs" value="Schedule appointments" data-advanced-need disabled /><i>✓</i><span>Schedule appointments</span></label>
+                  <label><input type="checkbox" name="website_needs" value="Store customer or business data" data-advanced-need disabled /><i>✓</i><span>Store business data</span></label>
+                  <label><input type="checkbox" name="website_needs" value="Provide an admin panel" data-advanced-need disabled /><i>✓</i><span>Include an admin panel</span></label>
+                </fieldset>
+              </div>
+
+              <label class="field project-details">
+                <span>Describe exactly what you want on the website <b>*</b></span>
+                <textarea
+                  name="website_request"
+                  rows="7"
+                  placeholder="Tell us about the pages, information, features, style, examples you like, and anything else that matters to you."
+                  required
+                ></textarea>
+                <small>The more detail you share, the more accurate the project plan can be.</small>
+              </label>
+
+              <label class="care-choice">
+                <input type="checkbox" name="monthly_site_care" value="Yes" />
+                <i>✓</i>
+                <span>
+                  <strong>I’m interested in monthly site care</strong>
+                  <small>TWM Tech hosts and maintains the website after launch.</small>
+                </span>
+                <b>OPTIONAL</b>
+              </label>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-heading">
+                <span>04</span>
+                <div>
+                  <h2>Payment preference</h2>
+                  <p>This is only your expected payment method. No payment is collected here.</p>
+                </div>
+              </div>
+
+              <fieldset class="payment-grid">
+                <legend class="sr-only">Expected payment method</legend>
+                <label class="payment-card">
+                  <input type="radio" name="payment_method" value="Credit card" required />
+                  <span class="radio-mark"></span>
+                  <i class="payment-icon card-icon">▰</i>
+                  <span><strong>Credit card</strong><small>Debit or credit</small></span>
+                </label>
+                <label class="payment-card">
+                  <input type="radio" name="payment_method" value="Cash" required />
+                  <span class="radio-mark"></span>
+                  <i class="payment-icon">$</i>
+                  <span><strong>Cash</strong><small>Local customers only</small></span>
+                </label>
+                <label class="payment-card">
+                  <input type="radio" name="payment_method" value="Cash App" required />
+                  <span class="radio-mark"></span>
+                  <i class="payment-icon cashapp-icon">$</i>
+                  <span><strong>Cash App</strong><small>Digital payment</small></span>
+                </label>
+                <label class="payment-card">
+                  <input type="radio" name="payment_method" value="PayPal" required />
+                  <span class="radio-mark"></span>
+                  <i class="payment-icon paypal-icon">P</i>
+                  <span><strong>PayPal</strong><small>Digital payment</small></span>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="form-submit-area">
+              <div class="submit-lock" aria-hidden="true">⌁</div>
+              <div>
+                <strong id="submit-heading">Ready when you are</strong>
+                <p id="submit-copy">Review your answers, then submit your project request.</p>
+              </div>
+              <button class="button submit-order" type="button">
+                Submit order <span>→</span>
+              </button>
+              <small class="submit-note" id="submit-status" aria-live="polite">No payment will be charged when you submit.</small>
+            </div>
+          </form>
+
+          <aside class="order-aside">
+            <div class="aside-card">
+              <span class="aside-label">YOUR REQUEST</span>
+              <div class="selected-package-icon">◇</div>
+              <h2 id="summary-package">Choose a package</h2>
+              <p id="summary-description">Select a website package to begin your project request.</p>
+              <div class="summary-price">
+                <span>PROJECT PRICE</span>
+                <strong id="summary-price">—</strong>
+                <small id="summary-price-note">Choose a package to see pricing</small>
+              </div>
+              <ul id="summary-features">
+                <li><i>✓</i> Clear project scope</li>
+                <li><i>✓</i> Custom design</li>
+                <li><i>✓</i> Mobile-ready build</li>
+              </ul>
+              <div class="summary-care">
+                <span>MONTHLY SITE CARE</span>
+                <strong id="summary-care">Not selected</strong>
+              </div>
+            </div>
+            <div class="privacy-note">
+              <i>⌁</i>
+              <p><strong>No payment is taken today.</strong>Your project details are sent to TWM Tech’s order spreadsheet. Payment processing will be added separately.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="order-footer">
+      <div class="shell">
+        <span>© <span id="year"></span> TWM Tech</span>
+        <a href="index.html">Return to website</a>
+      </div>
+    </footer>
+  </body>
+</html>
