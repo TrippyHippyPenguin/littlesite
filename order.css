@@ -31,19 +31,21 @@
 .form-section-heading p { margin: 0; color: #7a8794; font-size: 12px; }
 
 fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
-.package-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.package-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
 .select-card, .payment-card { position: relative; cursor: pointer; }
-.select-card { min-height: 113px; display: flex; align-items: flex-start; gap: 12px; padding: 19px 17px; border: 1px solid #d7dce0; border-radius: 7px; transition: border-color .2s, background .2s, box-shadow .2s; }
+.select-card { min-height: 158px; display: flex; align-items: flex-start; gap: 10px; padding: 19px 14px; border: 1px solid #d7dce0; border-radius: 7px; transition: border-color .2s, background .2s, box-shadow .2s; }
 .select-card:hover { border-color: #aab9ca; }
 .select-card:has(input:checked) { border-color: var(--blue); background: #f5f8ff; box-shadow: 0 0 0 1px var(--blue); }
 .select-card input, .payment-card input, .needs-grid input, .care-choice input { position: absolute; opacity: 0; pointer-events: none; }
 .radio-mark { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px; border: 1px solid #aab5c0; border-radius: 50%; box-shadow: inset 0 0 0 4px white; }
 input:checked + .radio-mark { background: var(--blue); border-color: var(--blue); }
-.option-copy { display: flex; flex-direction: column; padding-right: 76px; }
+.option-copy { display: flex; flex-direction: column; padding-right: 55px; }
 .option-copy strong { color: var(--navy); font: 700 14px var(--display); }
 .option-copy small { margin-top: 5px; color: #768493; font-size: 10px; line-height: 1.5; }
+.option-badge { align-self: flex-start; margin-top: 9px; padding: 3px 6px; color: var(--navy); background: var(--cyan); border-radius: 2px; font: 800 7px var(--display); letter-spacing: .5px; text-transform: uppercase; }
 .option-tag { position: absolute; top: 18px; right: 14px; color: #53677b; background: #edf0f2; padding: 4px 7px; border-radius: 2px; font: 800 7px var(--display); letter-spacing: .4px; }
 .advanced-select:has(input:checked) .option-tag { color: var(--navy); background: var(--cyan); }
+.popular-select:has(input:checked) .option-tag { color: white; background: var(--blue); }
 
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 17px; }
 .field { display: flex; flex-direction: column; gap: 7px; }
@@ -131,6 +133,7 @@ input:checked + .radio-mark { background: var(--blue); border-color: var(--blue)
 
 @media (max-width: 900px) {
   .order-layout { grid-template-columns: 1fr; max-width: 700px; }
+  .package-options { grid-template-columns: 1fr; }
   .order-aside { position: static; grid-row: 1; }
   .aside-card { display: grid; grid-template-columns: auto 1fr; column-gap: 20px; }
   .aside-label, .aside-card ul, .summary-care { grid-column: 1 / -1; }

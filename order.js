@@ -1,22 +1,29 @@
 const packageDetails = {
-  simple: {
-    title: 'Simple Website',
-    description: 'A polished informational website for services, pricing, and contact details.',
-    features: ['Business information', 'Services and pricing', 'Responsive design'],
-    price: '$50',
-    priceNote: 'Fixed project price',
+  starter: {
+    title: 'Starter Website',
+    description: 'A professional one-page website for small businesses that need to get online quickly.',
+    features: ['Professional one-page website', 'Business information', 'Responsive design'],
+    price: '$99',
+    priceNote: 'One-time website development price',
+  },
+  business: {
+    title: 'Business Website',
+    description: 'A complete multi-page website with forms, galleries, and everything most businesses need.',
+    features: ['Complete multi-page website', 'Forms and galleries', 'Responsive design'],
+    price: '$199',
+    priceNote: 'One-time website development price',
   },
   advanced: {
     title: 'Advanced Website',
-    description: 'A custom platform for business data, workflows, scheduling, and admin tools.',
-    features: ['Custom workflows', 'Secure data storage', 'Admin tools and dashboards'],
-    price: '$150–$250',
-    priceNote: 'Estimated range — final quote provided',
+    description: 'A custom website with databases, customer data storage, dashboards, or advanced workloads.',
+    features: ['Databases and data storage', 'Custom dashboards', 'Advanced workloads'],
+    price: 'Starting at $299',
+    priceNote: 'Final quote provided after project review',
   },
 };
 
-// Replace this with the /exec URL from your deployed Google Apps Script web app.
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbykA_r6J1c7Pisp_rV3cRogpDLhFR8xLHKWFP0YKYiVdy8_hRBk6TxcST4OV4gaZes8/exec';
+// Basin form endpoints are public submission URLs and are safe to include here.
+const BASIN_FORM_ENDPOINT = 'https://usebasin.com/f/5d1779d23c6f';
 
 const packageInputs = document.querySelectorAll('[data-package]');
 const careInput = document.querySelector('[name="monthly_site_care"]');
@@ -58,7 +65,7 @@ packageInputs.forEach((input) => {
 });
 
 careInput.addEventListener('change', () => {
-  summaryCare.textContent = careInput.checked ? 'Interested' : 'Not selected';
+  summaryCare.textContent = careInput.checked ? 'Interested — from $59/month' : 'Not selected';
   summaryCare.classList.toggle('selected', careInput.checked);
 });
 
@@ -88,22 +95,18 @@ function setSubmitStatus(message, type = '') {
 submitButton.addEventListener('click', async () => {
   if (!orderForm.reportValidity()) return;
 
-  if (GOOGLE_APPS_SCRIPT_URL.includes('PASTE_YOUR_')) {
-    setSubmitStatus('Add your deployed Google Apps Script URL in order.js before accepting orders.', 'error');
-    return;
-  }
-
   const formData = new FormData(orderForm);
   const order = {
+    form_type: 'Website Project Request',
     website_package: formData.get('website_package'),
     business_name: formData.get('business_name'),
     contact_name: formData.get('contact_name'),
     email: formData.get('email'),
     phone: formData.get('phone'),
     business_description: formData.get('business_description'),
-    website_needs: formData.getAll('website_needs'),
+    website_needs: formData.getAll('website_needs').join(', ') || 'None selected',
     website_request: formData.get('website_request'),
-    monthly_site_care: careInput.checked,
+    monthly_site_care: careInput.checked ? 'Yes' : 'No',
     payment_method: formData.get('payment_method'),
     submitted_at: new Date().toISOString(),
     page_url: window.location.href,
@@ -116,12 +119,19 @@ submitButton.addEventListener('click', async () => {
   setSubmitStatus('Sending your project request…');
 
   try {
-    await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    const response = await fetch(BASIN_FORM_ENDPOINT, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(order),
     });
+
+    if (!response.ok) {
+      const result = await response.json().catch(() => ({}));
+      throw new Error(result.error || 'Basin rejected the request.');
+    }
 
     submitArea.classList.add('submitted');
     submitHeading.textContent = 'Order request sent';

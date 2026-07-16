@@ -1,0 +1,30 @@
+.subscription-hero h1 em { color: var(--lime); }
+.subscription-hero .eyebrow span { background: var(--lime); }
+.subscription-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+.subscription-card { position: relative; min-height: 230px; display: flex; align-items: flex-start; gap: 12px; padding: 21px 18px; overflow: hidden; background: #fbfbf9; border: 1px solid #d7dce0; border-radius: 7px; cursor: pointer; transition: border-color .2s, background .2s, box-shadow .2s; }
+.subscription-card:hover { border-color: #aab9ca; }
+.subscription-card:has(input:checked) { background: #f5f8ff; border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.subscription-card input { position: absolute; opacity: 0; pointer-events: none; }
+.subscription-card > .radio-mark { margin-top: 2px; }
+.subscription-card > i { position: absolute; right: 17px; bottom: 17px; display: grid; place-items: center; width: 24px; height: 24px; color: transparent; background: #e8ecef; border-radius: 50%; font-size: 11px; font-style: normal; }
+.subscription-card:has(input:checked) > i { color: var(--navy); background: var(--cyan); }
+.advanced-hosting-card:has(input:checked) > i { background: var(--lime); }
+.subscription-plan-copy { min-width: 0; display: flex; flex: 1; flex-direction: column; }
+.plan-label { margin-bottom: 14px; color: #6d7e8e; font: 800 7px var(--display); letter-spacing: 1px; }
+.subscription-plan-copy > strong { color: var(--navy); font: 700 16px var(--display); letter-spacing: -.4px; }
+.subscription-plan-copy > small { min-height: 55px; margin-top: 6px; color: #758493; font-size: 10px; line-height: 1.55; }
+.plan-price { margin-top: 18px; color: #738292; font-size: 9px; }
+.plan-price b { margin-right: 3px; color: var(--blue); font: 700 26px var(--display); letter-spacing: -1px; }
+.business-hosting-card .plan-price b { color: #168fa0; }
+.advanced-hosting-card .plan-price b { color: #168fa0; }
+.subscription-summary .summary-price strong { color: var(--lime); }
+
+@media (max-width: 900px) {
+  .subscription-options { grid-template-columns: 1fr; }
+  .subscription-card { min-height: 190px; }
+}
+
+@media (max-width: 640px) {
+  .subscription-options { grid-template-columns: 1fr; }
+  .subscription-card { min-height: 205px; }
+}
