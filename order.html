@@ -184,6 +184,44 @@
                 </span>
                 <b>OPTIONAL</b>
               </label>
+
+              <div class="referral-card" id="referral-card">
+                <div class="referral-heading">
+                  <div>
+                    <strong>Have a referral code?</strong>
+                    <small>Optional — leave this blank if you don’t have one.</small>
+                  </div>
+                  <b>OPTIONAL</b>
+                </div>
+                <div class="referral-controls">
+                  <label class="field referral-field" for="referral-code">
+                    <span class="sr-only">Referral code</span>
+                    <input
+                      id="referral-code"
+                      type="text"
+                      name="referral_code"
+                      placeholder="Enter referral code"
+                      maxlength="40"
+                      autocomplete="off"
+                      autocapitalize="characters"
+                      spellcheck="false"
+                    />
+                  </label>
+                  <button class="button redeem-referral" id="redeem-referral" type="button">Redeem code</button>
+                </div>
+                <p class="referral-status" id="referral-status" aria-live="polite"></p>
+                <div class="referral-benefits" id="referral-benefits" hidden>
+                  <strong><span>✓</span> <b id="redeemed-referral-code">Referral code</b> redeemed</strong>
+                  <p>Your referral includes:</p>
+                  <ul>
+                    <li>30 days of free post-launch support</li>
+                    <li>Bug fixes for problems caused by your original website code</li>
+                    <li>Help with small text or image changes</li>
+                    <li>Basic troubleshooting</li>
+                    <li>One scheduled website update</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="form-section">

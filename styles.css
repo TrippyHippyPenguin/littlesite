@@ -124,6 +124,16 @@ h1 em, h2 em { color: var(--cyan); font-style: normal; }
 .hero-ribbon b { color: white; }
 @keyframes ribbon { to { transform: translateX(-50%); } }
 
+.credentials { padding: 70px 0 0; background: var(--paper); }
+.credentials-card { display: grid; grid-template-columns: auto .85fr 1.2fr; gap: 28px; align-items: center; padding: 30px 34px; color: white; background: var(--navy); border: 1px solid rgba(84,214,232,.22); border-radius: 10px; box-shadow: 0 22px 50px rgba(9,30,55,.12); }
+.credentials-badge { position: relative; display: grid; place-items: center; width: 74px; height: 74px; color: var(--cyan); background: rgba(84,214,232,.09); border: 1px solid rgba(84,214,232,.25); border-radius: 50%; }
+.credentials-badge strong { font: 800 13px var(--display); letter-spacing: 1px; }
+.credentials-badge span { position: absolute; right: -2px; bottom: 2px; display: grid; place-items: center; width: 23px; height: 23px; color: var(--navy); background: var(--lime); border: 3px solid var(--navy); border-radius: 50%; font-size: 9px; font-weight: 800; }
+.credentials-title small { color: #7890a6; font: 800 7px var(--display); letter-spacing: 1.3px; }
+.credentials-title h2 { margin: 7px 0 0; color: white; font: 700 24px/1.25 var(--display); letter-spacing: -1px; }
+.credentials-title h2 em { color: var(--cyan); font-style: normal; }
+.credentials-card > p { margin: 0; padding-left: 28px; color: #aebdcb; border-left: 1px solid rgba(255,255,255,.12); font-size: 13px; line-height: 1.7; }
+
 .services { background: var(--paper); }
 .section-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 110px; align-items: end; margin-bottom: 58px; }
 .section-heading h2, .care h2, .faq h2 { font-size: clamp(38px, 4.2vw, 55px); color: var(--navy); }
@@ -282,6 +292,9 @@ h1 em, h2 em { color: var(--cyan); font-style: normal; }
   .pill-top { right: -5px; }
   .pill-bottom { left: -4px; bottom: -2px; }
   .section-heading, .care-grid, .faq-grid { grid-template-columns: 1fr; gap: 28px; }
+  .credentials { padding-top: 52px; }
+  .credentials-card { grid-template-columns: auto 1fr; gap: 20px; padding: 27px; }
+  .credentials-card > p { grid-column: 1 / -1; padding: 19px 0 0; border-top: 1px solid rgba(255,255,255,.12); border-left: 0; }
   .section-heading { margin-bottom: 42px; }
   .package-grid { grid-template-columns: 1fr; }
   .package-card { min-height: 640px; }

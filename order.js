@@ -24,6 +24,14 @@ const packageDetails = {
 
 // Basin form endpoints are public submission URLs and are safe to include here.
 const BASIN_FORM_ENDPOINT = 'https://usebasin.com/f/5d1779d23c6f';
+const REFERRAL_CODES = new Set(['TWMTECH', 'DF20']);
+const REFERRAL_BENEFITS = [
+  '30 days of free post-launch support',
+  'Bug fixes for problems caused by your original website code',
+  'Help with small text or image changes',
+  'Basic troubleshooting',
+  'One scheduled website update',
+];
 
 const packageInputs = document.querySelectorAll('[data-package]');
 const careInput = document.querySelector('[name="monthly_site_care"]');
@@ -85,6 +93,13 @@ const submitStatus = document.getElementById('submit-status');
 const submitArea = document.querySelector('.form-submit-area');
 const submitHeading = document.getElementById('submit-heading');
 const submitCopy = document.getElementById('submit-copy');
+const referralCard = document.getElementById('referral-card');
+const referralInput = document.getElementById('referral-code');
+const referralButton = document.getElementById('redeem-referral');
+const referralStatus = document.getElementById('referral-status');
+const referralBenefits = document.getElementById('referral-benefits');
+const redeemedReferralCodeLabel = document.getElementById('redeemed-referral-code');
+let redeemedReferralCode = '';
 
 function setSubmitStatus(message, type = '') {
   submitStatus.textContent = message;
@@ -92,8 +107,60 @@ function setSubmitStatus(message, type = '') {
   if (type) submitStatus.classList.add(type);
 }
 
+function resetReferralState() {
+  redeemedReferralCode = '';
+  referralInput.setCustomValidity('');
+  referralCard.classList.remove('redeemed', 'invalid');
+  referralBenefits.hidden = true;
+  referralButton.textContent = 'Redeem code';
+}
+
+function redeemReferral({ fromButton = false, reportInvalid = false } = {}) {
+  const code = referralInput.value.trim().toUpperCase();
+
+  resetReferralState();
+
+  if (!code) {
+    referralStatus.textContent = fromButton ? 'Enter a code to redeem, or leave this optional field blank.' : '';
+    return true;
+  }
+
+  if (!REFERRAL_CODES.has(code)) {
+    referralInput.setCustomValidity('This referral code is not recognized.');
+    referralCard.classList.add('invalid');
+    referralStatus.textContent = 'This referral code is not recognized. Check the code or leave the field blank.';
+    if (reportInvalid) referralInput.reportValidity();
+    return false;
+  }
+
+  referralInput.value = code;
+  redeemedReferralCode = code;
+  redeemedReferralCodeLabel.textContent = code;
+  referralCard.classList.add('redeemed');
+  referralBenefits.hidden = false;
+  referralButton.textContent = 'Code redeemed ✓';
+  referralStatus.textContent = 'Referral successfully applied to this website order.';
+  return true;
+}
+
+referralButton.addEventListener('click', () => {
+  redeemReferral({ fromButton: true, reportInvalid: true });
+});
+
+referralInput.addEventListener('input', () => {
+  resetReferralState();
+  referralStatus.textContent = '';
+});
+
+referralInput.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter') return;
+  event.preventDefault();
+  redeemReferral({ fromButton: true, reportInvalid: true });
+});
+
 submitButton.addEventListener('click', async () => {
   if (!orderForm.reportValidity()) return;
+  if (!redeemReferral({ reportInvalid: true })) return;
 
   const formData = new FormData(orderForm);
   const order = {
@@ -107,6 +174,9 @@ submitButton.addEventListener('click', async () => {
     website_needs: formData.getAll('website_needs').join(', ') || 'None selected',
     website_request: formData.get('website_request'),
     monthly_site_care: careInput.checked ? 'Yes' : 'No',
+    referral_code: redeemedReferralCode,
+    referral_status: redeemedReferralCode ? 'Redeemed' : 'Not provided',
+    referral_benefits: redeemedReferralCode ? REFERRAL_BENEFITS.join('; ') : '',
     payment_method: formData.get('payment_method'),
     submitted_at: new Date().toISOString(),
     page_url: window.location.href,
