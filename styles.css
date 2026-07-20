@@ -48,10 +48,7 @@ button { font: inherit; }
 .site-header.scrolled { position: fixed; background: rgba(9, 28, 52, .95); backdrop-filter: blur(16px); box-shadow: 0 8px 30px rgba(4, 15, 31, .14); }
 .nav-wrap { height: 86px; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -.5px; }
-.brand > span:last-child > span { font-weight: 500; opacity: .7; }
-.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; color: white; background: var(--blue); border-radius: 50% 50% 50% 9px; }
-.brand-mark svg { width: 23px; height: 23px; }
-.brand-mark path { stroke: currentColor; stroke-width: 2.2; }
+.brand-logo { display: block; width: auto; height: 54px; }
 .site-nav { display: flex; align-items: center; gap: 33px; font-weight: 600; font-size: 14px; }
 .site-nav > a:not(.nav-cta) { opacity: .77; transition: opacity .2s; }
 .site-nav > a:not(.nav-cta):hover { opacity: 1; }
@@ -308,6 +305,7 @@ h1 em, h2 em { color: var(--cyan); font-style: normal; }
 }
 
 @media (max-width: 520px) {
+  .brand-logo { height: 44px; }
   .shell { width: calc(100% - 28px); }
   .hero h1 { font-size: 43px; }
   .hero-copy > p { font-size: 16px; }
