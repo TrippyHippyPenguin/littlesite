@@ -124,7 +124,7 @@ submitButton.addEventListener('click', async () => {
 
     submitArea.classList.add('submitted');
     submitHeading.textContent = 'Subscription request sent';
-    submitCopy.textContent = `Thank you, ${order.contact_name}. Your site care details are now with TWM Tech.`;
+    submitCopy.textContent = `Thank you, ${order.contact_name}. Your site care details are now with TWM TECH.`;
     submitButton.textContent = 'Request sent ✓';
     setSubmitStatus(`I’ll review your request and reach out to ${order.email} by email soon.`, 'success');
   } catch (error) {

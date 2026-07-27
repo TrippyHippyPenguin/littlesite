@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TWMTech">
+  <rect width="64" height="64" rx="14" fill="#0b1f3a"/>
+  <path d="M10 17h25v8h-8v23h-9V25h-8z" fill="#3280ff"/>
+  <path d="M35 25h9l4 11 4-11h9l-9 23h-8z" fill="#fff"/>
+</svg>
