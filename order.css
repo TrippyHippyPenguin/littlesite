@@ -14,7 +14,7 @@
 .order-hero h1 { margin: 0; font: 700 clamp(44px, 5vw, 65px)/1.05 var(--display); letter-spacing: -3px; }
 .order-hero h1 em { color: var(--cyan); font-style: normal; }
 .order-hero-inner > p { max-width: 620px; margin: 24px 0 39px; color: #afbdcc; font-size: 16px; line-height: 1.7; }
-.order-progress { max-width: 585px; display: flex; align-items: center; }
+.order-progress { max-width: 760px; display: flex; align-items: center; }
 .order-progress div { display: flex; align-items: center; gap: 9px; color: #748ba1; font: 700 10px var(--display); letter-spacing: .5px; text-transform: uppercase; }
 .order-progress div.active { color: white; }
 .order-progress i { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid #466079; border-radius: 50%; font-style: normal; font-size: 9px; }
@@ -148,9 +148,14 @@ input:checked + .radio-mark { background: var(--blue); border-color: var(--blue)
 .privacy-note > i { flex: 0 0 auto; color: var(--blue); font-style: normal; }
 .privacy-note p { margin: 0; font-size: 9px; line-height: 1.6; }
 .privacy-note strong { display: block; color: var(--navy); font-size: 10px; }
+.contact-note { display: flex; flex-direction: column; gap: 3px; margin-top: 12px; padding: 17px; color: #748291; background: white; border: 1px solid #dadddc; border-radius: 7px; font-size: 9px; line-height: 1.55; }
+.contact-note strong { color: var(--navy); font: 700 10px var(--display); }
+.contact-note a { color: var(--blue); font-size: 10px; font-weight: 700; overflow-wrap: anywhere; }
+.contact-note a:hover { color: var(--navy); }
+.contact-note small { color: #748291; font-size: 9px; }
 
 .order-footer { color: #8193a4; background: #07182c; }
-.order-footer .shell { height: 64px; display: flex; align-items: center; justify-content: space-between; font-size: 10px; }
+.order-footer .shell { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 10px; }
 .order-footer a:hover { color: white; }
 
 @media (max-width: 900px) {

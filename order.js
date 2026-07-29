@@ -207,7 +207,7 @@ submitButton.addEventListener('click', async () => {
     submitHeading.textContent = 'Order request sent';
     submitCopy.textContent = `Thank you, ${order.contact_name}. Your project details are now with TWM TECH.`;
     submitButton.textContent = 'Order sent ✓';
-    setSubmitStatus(`I’ll review your request and reach out to ${order.email} by email soon.`, 'success');
+    setSubmitStatus(`Your order was emailed to TWM TECH. I will contact you at ${order.email} with demos to review.`, 'success');
   } catch (error) {
     submitButton.disabled = false;
     submitButton.innerHTML = originalButtonContent;
